@@ -17,9 +17,9 @@
     "build": "unbuild",
     "stub": "unbuild --stub"
   },
-  "repository": "https://github.com/shunnNet/vue-markdown",
+  "repository": "https://github.com/yuguaa/vue-markdown",
   "bugs": {
-    "url": "https://github.com/shunnNet/vue-markdown/issues"
+    "url": "https://github.com/yuguaa/vue-markdown/issues"
   },
   "keywords": [
     "vue",
