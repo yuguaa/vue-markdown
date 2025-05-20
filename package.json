@@ -7,8 +7,13 @@
   "scripts": {
     "prepare": "husky",
     "lint": "eslint",
-    "build": "pnpm --filter @crazydos/vue-markdown build",
-    "stub": "pnpm --filter @crazydos/vue-markdown stub"
+    "build:v3": "pnpm --filter @crazydos/vue-markdown build",
+    "build:v2": "pnpm --filter @yugu/vue-markdown-legacy build",
+    "postinstall": "pnpm -r run stub --if-present",
+    "stub": "pnpm --filter @crazydos/vue-markdown stub",
+    "dev": "pnpm --filter playground dev",
+    "dev:v2": "pnpm --filter playground-legacy dev",
+    "build": "run-p build:v3 build:v2"
   },
   "repository": "https://github.com/shunnNet/vue-markdown",
   "bugs": {
@@ -34,5 +39,8 @@
     "lint-staged": "^15.2.9",
     "typescript": "^5.3.3",
     "typescript-eslint": "^8.2.0"
+  },
+  "dependencies": {
+    "npm-run-all2": "^8.0.2"
   }
 }
