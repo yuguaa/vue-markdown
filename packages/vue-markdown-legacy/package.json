@@ -15,7 +15,8 @@
   },
   "scripts": {
     "build": "unbuild",
-    "stub": "unbuild --stub"
+    "stub": "unbuild --stub",
+    "release": "pnpm build && pnpm publish --no-git-checks --access public"
   },
   "repository": "https://github.com/yuguaa/vue-markdown",
   "bugs": {

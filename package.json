@@ -13,7 +13,8 @@
     "stub": "pnpm --filter @crazydos/vue-markdown stub",
     "dev": "pnpm --filter playground dev",
     "dev:v2": "pnpm --filter playground-legacy dev",
-    "build": "run-p build:v3 build:v2"
+    "build": "run-p build:v3 build:v2",
+    "release:v2": "pnpm --filter @yugu/vue-markdown-legacy release"
   },
   "repository": "https://github.com/shunnNet/vue-markdown",
   "bugs": {
