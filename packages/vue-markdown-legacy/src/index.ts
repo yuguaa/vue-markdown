@@ -41,7 +41,6 @@ const VueMarkdown = Vue.extend({
   },
   render(h) {
     const props = this.$props
-    // 使用 this.$scopedSlots 获取作用域插槽
     const slots = this.$scopedSlots || {}
 
     const processor = unified()
@@ -164,10 +163,6 @@ const VueMarkdown = Vue.extend({
         for (let i = aliasList.length - 1; i >= 0; i--) {
           const slotName = aliasList[i]
           if (slots[slotName]) {
-            console.log(`🚀 ~ vnodeProps:`, vnodeProps)
-            console.log(`🚀 ~ attrs:`, attrs)
-            console.log(`🚀 ~ thisContext:`, thisContext)
-            console.log(`🚀 ~ node:`, node)
             return slots[slotName]({
               ...attrs,
               ...vnodeProps,
