@@ -2,7 +2,7 @@
   "eslint.useFlatConfig": true,
   "editor.defaultFormatter": "EditorConfig.EditorConfig",
   "[vue]": {
-    "editor.defaultFormatter": "EditorConfig.EditorConfig"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"

@@ -59,10 +59,14 @@ const VueMarkdown = Vue.extend({
         const name = aliasList[i]
         if (props.customAttrs.hasOwnProperty(name)) {
           const value = props.customAttrs[name]
-          return typeof value === 'function' ? value(node, combinedAttrs) : value
+          const result = typeof value === 'function' ? value(node, combinedAttrs) : value
+          return {
+            attrs: result.attrs || {},
+            on: result.on || {}
+          }
         }
       }
-      return {}
+      return { attrs: {}, on: {} }
     }
 
     const parseChildren = (nodeList, context, parent) => {
@@ -153,26 +157,29 @@ const VueMarkdown = Vue.extend({
           default:
             return null
         }
-
-        attrs = {
-          ...attrs,
-          ...computeCustomAttrs(node, aliasList, { ...attrs, ...vnodeProps })
-        }
-
-        // 检查是否有对应的作用域插槽
+        const customAttrs = computeCustomAttrs(node, aliasList, { ...attrs, ...vnodeProps })
         for (let i = aliasList.length - 1; i >= 0; i--) {
           const slotName = aliasList[i]
           if (slots[slotName]) {
             return slots[slotName]({
               ...attrs,
+              ...customAttrs.attrs,
               ...vnodeProps,
+              on: customAttrs.on,
               children: parseChildren(node.children, thisContext, node)
             })
           }
         }
 
         // 如果没有插槽，则渲染默认的 HTML 标签
-        return h(node.tagName, { attrs }, parseChildren(node.children, thisContext, node))
+        return h(
+          node.tagName,
+          {
+            attrs: { ...attrs, ...customAttrs.attrs },
+            on: customAttrs.on
+          },
+          parseChildren(node.children, thisContext, node)
+        )
       })
     }
 
