@@ -1,7 +1,7 @@
 {
   "name": "@yugu/vue-markdown-legacy",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Vue component for rendering markdown with unified",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
